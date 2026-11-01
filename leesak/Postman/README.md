@@ -1,22 +1,13 @@
-# Postman 실행 증빙
+# Postman 테스트 및 직접 캡처
 
-로컬 Spring Boot API에 Postman CLI 1.69.0으로 컬렉션을 실행했습니다. **요청 21개 / 검증 32개 / 실패 0개**입니다. 생성한 테스트 데이터는 컬렉션 마지막 단계에서 정리합니다.
+[컬렉션 파일](books-genres.postman_collection.json)을 Postman에 불러온 뒤 서버를 실행합니다. 기본 주소는 `http://localhost:8080`입니다.
 
-- [Import 가능한 컬렉션](books-genres.postman_collection.json)
-- [실제 CLI 원본 출력](postman-cli-output.txt)
-- [전체 결과 HTML](postman-results.html)
+01번부터 21번까지 순서대로 하나씩 요청을 보내며 결과를 캡처합니다. 01·02·06번 생성 요청의 응답에서 장르와 도서 ID가 컬렉션 변수에 자동 저장됩니다.
 
-아래 이미지는 원본 CLI 출력의 렌더링입니다. Postman 데스크톱 앱의 UI 캡처는 아닙니다. CLI 클라우드 게시에는 로그인이 필요하지만, 로컬 컬렉션 테스트는 정상 완료되었습니다.
+- 캡처에 요청 메서드·URL·JSON 본문·응답 상태·응답 JSON이 보이도록 합니다.
+- 각 요청 직후 서버 콘솔에서 실제 SQL과 바인딩 값도 함께 캡처합니다.
+- 삭제 성공의 `204 No Content`는 응답 본문이 비어 있는 것이 정상입니다.
+- 17·19·20번에서 테스트 데이터를 삭제하므로, 다시 촬영하려면 01번부터 시작합니다.
+- 직접 캡처한 이미지를 이 폴더에 추가합니다.
 
-| 이미지 | 포함된 요청 |
-|---|---|
-| [01](postman-results-01.png) | 장르 생성 2건, 전체 조회 |
-| [02](postman-results-02.png) | 장르 단건 조회·수정, 도서 생성 |
-| [03](postman-results-03.png) | 도서 전체·단건 조회, 장르별 도서 조회 |
-| [04](postman-results-04.png) | 도서가 남은 장르 삭제409, 공백400, 없는 장르404 |
-| [05](postman-results-05.png) | 장르 공백400, 없는 도서404, 도서 제목·장르 수정 |
-| [06](postman-results-06.png) | 이전 장르 관계 해제, 도서 삭제, 삭제된 도서404 |
-| [07](postman-results-07.png) | 두 장르 삭제, 삭제된 장르404 |
-| [08](postman-results-08.png) | 전체 실행 요약 |
-
-![실행 요약](postman-results-08.png)
+[기존 CLI 원본 실행 기록](postman-cli-output.txt)은 요청 21개·검증 32개·실패 0개의 실제 실행 결과입니다.

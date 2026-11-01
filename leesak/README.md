@@ -26,7 +26,7 @@ DB 계정 정보는 소스에 포함하지 않습니다. 기본 파일 DB는 재
 
 ## 엔티티 관계
 
-![도서와 장르 ERD](ERD/books-genres-erd.png)
+ERD는 직접 작성한 이미지를 `ERD` 폴더에 추가합니다. 테이블 관계는 `ERD/schema.mmd`를 참고할 수 있습니다.
 
 - `Genre.books`: `@OneToMany(mappedBy = "genre")`
 - `Book.genre`: `@ManyToOne(fetch = FetchType.LAZY)`
@@ -83,11 +83,10 @@ postman collection run Postman/books-genres.postman_collection.json --no-report-
 
 테스트는 장르·도서 생성/조회/수정/삭제, 장르별 도서 조회, 장르 이동, 부분 수정 시 필드 유지, 입력 오류(400), 없는 리소스(404), 도서가 남은 장르 삭제(409)를 검사합니다. 마지막에는 테스트에서 생성한 데이터를 삭제합니다.
 
-`Postman/postman-cli-output.txt`의 실행 결과와 첨부 이미지는 실제 로컬 API에 대한 **Postman CLI 실행 결과**입니다. 이미지는 CLI 실행 기록을 읽기 쉽게 렌더링한 것이며 Postman 데스크톱 앱 화면은 아닙니다.
+Postman에서 컬렉션의 요청을 01번부터 순서대로 보내고, URL·요청 본문·응답 상태·응답 JSON이 보이도록 직접 캡처하여 `Postman` 폴더에 추가합니다.
 
-실제 실행 결과: **요청 21개, 검증 32개 모두 통과**했습니다. [원본 CLI 실행 기록](Postman/postman-cli-output.txt)과 [실행 결과 HTML](Postman/postman-results.html)을 확인할 수 있습니다.
+기존 CLI 실행에서는 요청 21개와 검증 32개가 모두 통과했습니다. [원본 CLI 실행 기록](Postman/postman-cli-output.txt)을 참고할 수 있습니다.
 
-![Postman CLI 실행 요약](Postman/postman-results-08.png)
 
 ## SQL 실행 로그
 
